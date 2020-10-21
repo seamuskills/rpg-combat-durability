@@ -36,7 +36,7 @@ class Acheivment:
 		if self.progress >= self.maxprogress and not self.completed:
 			print(green + "you got an achivement: " + self.name,end = "\n\n")
 			currpoints += self.acheivmentpoints
-			player.coins += 1
+			player.coins += 100
 			saveach(self.name)
 			self.completed = True
 			return currpoints
