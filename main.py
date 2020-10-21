@@ -1,8 +1,47 @@
-import random
+import random, time, json,os
+from encode import ec
+try:
+	os.system("clear")
+except:
+	os.system("cls")
+del os
+
+#see message.txt!
+
 combat = False
 green = "\033[32m "
 white = '\033[37m '
 red = '\033[31m '
+
+def sprint(text, wait=0.05):
+	for i in text:
+		print(i,end="",flush = True)
+		time.sleep(wait)
+	print("")
+
+
+achievements = []
+class Acheivment:
+	def __init__(self,maxprogress,name):
+		self.acheivmentpoints = 0 + acheivments * 5
+		self.progress = 0
+		self.maxprogress = maxprogress
+		self.name = name
+		self.completed = False
+		achievements.append(self)
+	def maxachive(self, acheivmentpoints):
+		if acheivmentpoints == 50:
+			maxachievments = True
+	def checkachieved(self,currpoints):
+		if self.progress >= self.maxprogress and not self.completed:
+			print(green + "you got an achivement: " + self.name,end = "\n\n")
+			currpoints += self.acheivmentpoints
+			saveach(self.name)
+			self.completed = True
+			return currpoints
+		else:
+			return currpoints
+
 class Weapon:
 	def __init__(self,hitchance,mindamage,maxdamage,name,attackone,attacktwo,attackthree,durability):
 		self.hitchance = hitchance
@@ -30,26 +69,49 @@ class Creature:
 				enemy.hp -= round(damage - ((damage * enemy.ac)/2),1)
 			if enemy.hp <= 0:
 				if enemy == player:
-					print("Game Over")
+					sprint("Game Over")
 				else:
 					enemy.hp = enemy.maxhp
-				print(enemy.name + " defeated")
+				sprint(enemy.name + " defeated")
 				self.hp += round((self.maxhp - self.hp)/2,1)
-				print(self.name + " healed half the lost hp back for winning the fight (" + str(round(self.hp,1)) +"hp)")
+				sprint(self.name + " healed half the lost hp back for winning the fight (" + str(round(self.hp,1)) +"hp)")
 				self.coins += enemy.coins
 				return False
 			else:
 				return True
 
+
+class Food:
+  def _init__(self,hp,name,text):
+    self.hp = hp
+    self.name = name
+    self.text = text
+
+
+cg = input("see change log?(y/n)\n")
+print("")
+if cg == "y":
+	cg = open('change.txt', "r")
+	changed = cg.read()
+	print(changed)
+	cg.close()
+	print("")
+
 stick=Weapon(0.1,5,20,"Stick","You poke it with a stick! It was slightly annoyed.","You plunge the stick into its flesh! It wasnt impressed.","As the stick went into its chest, it laughed at you!",10000000)
 sword=Weapon(0.3,15,35,"Sword","You swing your sword peircing its skin!","As you plunge your blade into its stomach, it yells at you!","You swing the sword with all your might! The hit proved effective.",25)
 ensword=Weapon(0.3,30,50,"Enchanted Sword","The sword seems to cut the enemy unusually well.","It seems that the enchanted sword cuts flesh and bone with little effort.","With a mighty strike the enchanted sword cleaves through the enemy!",37)
 bow=Weapon(0.3,20,35,"Bow","Your bow shot hits! The enemy yelps at the arrow imbedded in it!","Your arrow wooshes through the air and embeds in your enemy!","Those archery classes really paid off!",75)
-throwdarts=Weapon(0.3,75,135,"throwing darts","As the dart embedds into your enemy, you realize that they do way more damage then you thought.","Your accuracy is impeccable!","The enemy doesn't seem intimidated untill you sink a dart into them.",75)
+throwdarts=Weapon(0.3,75,135,"throwing darts","As the dart embedds into your enemy, you realize that they do way more damage then you thought.","Your accuracy is impeccable!","The enemy doesn't seem intimidated untill you sink a dart into them.",50)
+adambow=Weapon(0.5,80,145,"adamantium bow","You hit the enemy with the arrow, It seemed effective","your arrow peirces them with little effort!","the enemy was mortally wounded by your attack",100)
+powersword=Weapon(0.5, 100, 150, "power sword","You swing the Power sword and dig it into the creature.","The enemy is impaled by your sword.","The sword goes into your enemy's chest, it's injured.", 100)
+tnt=Weapon(1,300,650,"tnt","You feel the shockwave pulse through your body!","Your ears ring at the massive explosion.","You chuck the tnt at the enemy, you shield your eyes from the bright blast.",0)
+hsknife = Weapon(1,30,50,"Heat seeking knife","You miss but the knife htis anyway.","How does this even work!","You almost strike yourself, but the knife guides your hand to the enemy!",30)
+luckystick=Weapon(0.7,300,1000,"lucky stick","Your stick feels lucky!","You feel the luck in your bones!","Does fortune favor you?",random.randint(10,15))#this stick cant be bought, it can be found every combat, but its only a very slim chance of finding it. its a fun thing that can make each run just that extra bit unique.
 
-weapons = [stick,sword,ensword,bow,throwdarts]
+weapons = [stick,sword,ensword,bow,throwdarts,adambow,powersword]
 inv = [stick]
 
+acheivments = 0
 skeleton = Creature(20,0.1,bow,"Skeleton",100,20)
 skeleton.fleechance = 0.4
 zombie = Creature(120,0,stick,"Zombie",100,120)
@@ -68,29 +130,157 @@ ghost=Creature(100,0.9,stick,"G h o s t",2500,50)
 ghost.fleechance = 1
 enghost=Creature(100,0.9,ensword,"G h o s t with enchanted sword",2500,50)
 enghost.fleechance = 1
-boss=Creature(1000,0,throwdarts,"Angry Elephant",100000000,100000000000000)
-boss.fleechance = 1
-enemies = [skeleton,zombie,zomknight,armoredskeleton,zomnin,armoredninja,giant,ghost,enghost,boss]
+giantskeleton=Creature(200,0.5,sword,"Giant Skeleton", 1500, 300)
+giantskeleton.fleechance = 2
+phantom=Creature(500,0.75,sword,"Phantom", 1000, 500)
+phantom.fleechance = 0.2
+assasain=Creature(750,0.75,ensword,"Assasain", 750, 1000)
+assasain.fleechance = 0.5
+elephant=Creature(1000,0,throwdarts,"Angry Elephant",2000,
+1000)
+elephant.fleechance = 1
+crazedbear=Creature(750,0.5, powersword, "Crazed Bear", 3000, 750)
+crazedbear.fleechance = 0.1
+madman=Creature(1000,0.6, powersword, "Mad Man", 5000, 1000)
+madman.fleechance = 0.2
+enemies = [skeleton,zombie,zomknight,armoredskeleton,zomnin,armoredninja,giant,ghost,enghost, giantskeleton, phantom, assasain, elephant, crazedbear, madman]
+maxlevel = len(enemies)-1
+
 player = Creature(100,random.randint(10,25)/100,stick,input("name your hero\n"),0,100)
 player.xp = 0
 player.level = 1
 player.food=3
-if player.name == "sdccc":
-	player.coins = 10000000
-	print(green + "cash cash cash added ;)" + white)
-	player.name = input("name your hero... again\n")
-if player.name == "sdhrd":
-	difficulty = 2
-	print(red + "hard mod activated!" + white)
-	player.name = input("name your hero... again\n")
-else:
-	difficulty = 1
-print("your stats:")
-print("health: " + str(player.hp))
-print("armor class: " + str(player.ac))
-print("weapon: " + str(player.weapon.name))
+cheat = True
+cheated = False
+difficulty = 1
+while cheat:
+	cheat = False
+	if player.name == "sdccc":
+		player.coins = 100000000000000000000000
+		sprint(green + "cash cash cash added ;)" + white)
+		player.name = input("name your hero... again\n")
+		cheat = True
+		cheated = True
+	if player.name == "sdhrd":
+		difficulty = 2
+		sprint(red + "hard mode activated! >:)" + white)
+		player.name = input("name your hero... again\n")
+		cheat = True
+	if player.name == "sddqd":
+		player.ac = 1
+		sprint(green + 'degrelessness mode activated' + white)
+		player.name = input("name your hero... again\n")
+		cheat = True
+		cheated = True
+	if player.name == "sddark":
+		white = '\033[30m'
+		sprint(white + "dark mode activated")
+		player.name = input("name your hero... again\n")
+		cheat = True
+	if player.name == "sdkfa":
+		sprint(green + "weapons added" + white)
+		inv += weapons 
+		player.name = input("name your hero... again\n")
+		cheat = True
+		cheated = True
+	if player.name == "sdclev":
+		player.level = int(input("type a number for your level\n"))
+		if player.level > (maxlevel-1):
+			player.level = maxlevel-1
+		if player.level < 0:
+			player.level = 0
+		for i in range(0,player.level):
+			player.maxhp += i*10
+		player.hp = player.maxhp
+		player.xp = 0
+		player.coins += 100*player.level
+		sprint("you are now level "+str(player.level))
+		player.name = input("name your hero... again\n")
+		cheat = True
+		cheated = True
+	if player.name == "sdbjd":
+		player.weapon = hsknife
+		inv.append(player.weapon)
+		sprint(green + "Futuristic tech equipped." + white)
+		player.name = input("name your hero... again\n")
+		cheat = True
 
+#achievements
+#get 100 kills
+kill100 = Acheivment(100,"Super Killer")
+#get 1000 kills
+kill1000 = Acheivment(1000,"Mega Killer,")
+#get all weapons
+Arsenal = Acheivment(len(weapons),"A Mighty Arsenal!")
+#win the Game
+Champion = Acheivment(1,"You are the champion, my friend.")
+#win the game (hard mode)
+Hwin = Acheivment(1,"Escaping Doom!")
+
+print("use the same name next time to load acheivment progress.\n type del before the name with no space in between the name and the del to delete progress")
+with open("saves.json","r") as f:
+	saves = json.loads(f.read())
+if "del" in player.name:
+	delete = input("are you sure you want to delete progress (y/n)\n")
+	if delete == "y":
+		tobedel = player.name
+		tobedel = ec(tobedel.replace("del",""))
+		if tobedel in saves:
+			del saves[tobedel]
+			with open("saves.json","w") as f:
+				f.write(json.dumps(saves))
+			print("progress deleted")
+		else:
+			raise NameError("No file by that name exists.")
+	else:
+		print("progress not deleted")
+	sprint("ending program",0.1)
+	exit()
+if ec(player.name) in saves:
+	save = saves[ec(player.name)]
+	for i in range(len(achievements)):
+		if achievements[i].name in save:
+			an = achievements[i].name
+			if save[an] == True:
+				achievements[i].completed = True
+		else:
+			save[achievements[i]] = False
+	if not cheated:
+		dosave = "y"
+	else:
+		print(red + "This game will not count toward progress as cheats have been\n used!" + white)
+		dosave = "n"
+	sprint("welcome back " + player.name,0.2)
+else:
+	if not cheated:
+		dosave = input("save your acheivment progress? (y/n)\n")
+		if dosave == "y":
+			saves[ec(player.name)] = {}
+			for i in range(len(achievements)):
+				saves[ec(player.name)][achievements[i].name] = False
+			with open("saves.json","w") as f:
+				f.write(json.dumps(saves))
+			print(green + "save file made!" + white)
+		else:
+			print("this game will not count toward progress then")
+	else:
+		print(red + "This game will not count toward progress as cheats have been\n used!" + white)
+		dosave = "n"
+achievedpoints = 0
+
+def saveach(ach):
+	if dosave == "y":
+		with open("saves.json","w") as f:
+			saves[ec(player.name)][ach] = True
+			f.write(json.dumps(saves))
+print(green)
+sprint("your stats:")
+sprint("health: " + str(player.hp))
+sprint("armor class: " + str(player.ac))
+sprint("weapon: " + str(player.weapon.name))
+sprint(white)
 foodcost = 50
+repaircost = 5
 
 while True:
 	combat = True
@@ -98,58 +288,99 @@ while True:
 	if enemymin < 0:
 		enemymin = 0
 	enemy = enemies[random.randint(enemymin,player.level)]
-	print(green + "an " + enemy.name + " has engaged" + white)
+	sprint(green + "an " + enemy.name + " has engaged" + white)
 	while combat:
-		action = input("attack, flee, or heal\n")
+		action = input("attack, flee, change weapon, or heal\n")
+		action = action.lower()
 		if action == "attack":
-			print(green + player.weapon.attacktext[random.randint(0,2)] + white)
+			sprint(green + player.weapon.attacktext[random.randint(0,2)] + white)
 			combat = player.attack(enemy)
-			player.weapon.dur -= 1 * difficulty
-			if player.weapon != stick:
-				print("your weapon has " + str(player.weapon.dur) + "/" + str(player.weapon.maxdur) + " durability left")
+			if player.weapon != tnt:
+				player.weapon.dur -= 1 * difficulty
+				if player.weapon != stick:
+					sprint("your weapon has " + str(player.weapon.dur) + "/" + str(player.weapon.maxdur) + " durability left")
+			else:
+				player.weapon.dur -= 1
+				print("you have " + str(tnt.dur) + " tnt left")
 			if player.weapon.dur <= 0:
-				print(red + player.name + "'s " + player.weapon.name + " broke!" + white)
+				if player.weapon != tnt:
+					sprint(red + player.name + "'s " + player.weapon.name + " broke!" + white)
+				else:
+					sprint(red + player.name + " ran out of tnt" + white)
 				player.weapon.dur = player.weapon.maxdur
 				inv.remove(player.weapon)
 				player.weapon = inv[random.randint(0,len(inv)-1)]
-				print(player.name + " equipped " + player.weapon.name + " from their inventory")
+				sprint(player.name + " equipped " + player.weapon.name + " from their inventory")
 		if action == "heal":
 			if player.food >= 1:
 				player.food -= 1
 				player.hp = player.maxhp
-				print("the food was really good and healed you to full hp")
+				sprint("the food was really good and healed you to full hp")
 			else:
-				print("you wasted your turn looking for food that you dont have")
+				sprint("you wasted your turn looking for food that you dont have")
 		if action == "flee":
 			flee = random.randint(player.level,100)
-			if flee > (enemy.fleechance/100):
+			if flee > (enemy.fleechance*100):
 				combat = False
+				print(green + "you ran away gaining no xp" + white)
+			else:
+				print(red + "your attempts at running fall short." + white)
+		if action == "change weapon":
+			print("\nyour inventory: ",end="")
+			for i in range(len(inv)):
+				if i < len(inv)-1:
+					print(inv[i].name,end=", ")
+				else:
+					print(inv[i].name,end="\n")
+			action = input("which weapon to equip?\n")
+			for i in inv:
+				if action.lower() == i.name:
+					player.weapon = i
+					print(green + "equipped " + i.name + white,end="\n\n")
+					break
+				if i == inv[-1]:
+					print(red + "you ruffle through your bag for a weapon that doesn't exist...\n" + white)
 		if combat:
 			combat = enemy.attack(player)
-			print(enemy.name + "'s hp: " + str(enemy.hp))
-			print(player.name + "'s hp: " + str(player.hp))
-			print(player.name + " has " + str(player.food) + " food")
+			sprint(enemy.name + "'s hp: " + str(enemy.hp))
+			sprint(player.name + "'s hp: " + str(player.hp))
+			sprint(player.name + " has " + str(player.food) + " food")
 	if player.hp <=0:
-		print(red + "Game Over" + white)
+		sprint(red + "Game Over" + white)
 		break
 	elif action != "flee":
+		if random.randint(1,100) > 98:
+			inv.append(luckystick)
+			print(green + "You found the lucky stick!" + white)
+		kill100.progress += 1
+		achievedpoints = kill100.checkachieved(achievedpoints)
+		kill1000.progress += 1
+		achievedpoints = kill1000.checkachieved(achievedpoints)
 		player.xp += enemy.maxhp
 		if player.xp > player.level * 100:
 			player.level += 1
 			player.maxhp += player.level*10
 			player.hp = player.maxhp
-			print(green + player.name + " leveled up to level " + str(player.level) + white)
+			sprint(green + player.name + " leveled up to level " + str(player.level) + white)
 			player.xp = 0
 			player.coins += 100*player.level
 			player.ac += round(player.ac*0.1,2)
-			print(player.name + "'s ac increased to " + str(player.ac))
-			if player.level >= 10:
-				print(green + "Congrates you won" + white)
+			sprint(player.name + "'s ac increased to " + str(player.ac))
+			if player.level >= maxlevel:
+				sprint(green + "Congrats you won" + white)
+				Champion.progress += 1
+				achievedpoints = Champion.checkachieved(achievedpoints)
+				if difficulty == 1:
+					sprint(red + "next time try hard mode >:D (name your hero sdhrd!). durability goes away twice as fast and food cost grows way quicker! Are you up to the challenge?" + white)
+				if difficulty == 2:
+					Hwin.progress = 1
+					achievedpoints = Hwin.checkachieved()
+					sprint(green + "great job! Have some fun with a lot of money just name yourself sdccc! you can even make it hard mode and give yourself the money cheat! have fun :)" + white)
 				break
 	shop = True
 	while shop:
 		print(player.name + " has " + str(player.coins) + "g")
-		print("welcome to the shop would you like to buy something before the next fight?" + green)
+		sprint("welcome to the shop would you like to buy something before the next fight?" + green)
 		if player.weapon != sword:
 			if sword in inv:
 				print("equip sword")
@@ -170,11 +401,29 @@ while True:
 				print("equip throwing darts")
 			else:
 				print("throwing darts:1250g")
+		if player.weapon != adambow:
+			if adambow in inv:
+				print("equip adamantium bow")
+			else:
+				print(adambow.name + ":1375g")
+		if player.weapon != powersword:
+			if powersword in inv:
+				print("equip power sword")
+			else:
+				print(powersword.name + ":2000g")
+		print("tnt: 650g (you have: " + str(tnt.dur) + " tnt)")
+		if player.weapon != luckystick:
+			if luckystick in inv:
+				print("equip lucky stick!")
+		print("achievements")
 		print("food: " + str(foodcost) + "g")
+		if player.weapon != stick and player.weapon != tnt:
+			print("repair weapon: " + str(repaircost * (player.weapon.maxdur-player.weapon.dur)) + "g")
 		print("exit" + white)
 		action = input("")
+		action = action.lower()
 		if action == "inv":
-			print(inv)
+			sprint(inv)
 		if action == "exit":
 			shop = False
 		if sword in inv:
@@ -184,11 +433,11 @@ while True:
 		if action == "sword" and player.weapon != sword and (player.coins >= 200 or haveitem):
 			player.weapon = sword
 			if haveitem:
-				print(green+"sword equipped"+white)
+				sprint(green+"sword equipped"+white)
 				player.weapon=sword
 			else:
 				player.coins -= 200
-				print(green + "Perchased and equipped sword!"+white)
+				sprint(green + "Perchased and equipped sword!"+white)
 				inv.append(sword)
 		if bow in inv:
 			haveitem = True
@@ -197,11 +446,11 @@ while True:
 		if action == "bow" and player.weapon != bow and (haveitem or player.coins >=700):
 			player.weapon = bow
 			if haveitem:
-				print(green+"bow equipped"+white)
+				sprint(green+"bow equipped"+white)
 				player.weapon=bow
 			else:
 				player.coins -= 700
-				print(green + "Perchased and equipped bow!"+white)
+				sprint(green + "Perchased and equipped bow!"+white)
 				inv.append(bow)
 		if ensword in inv:
 			haveitem=True
@@ -210,11 +459,11 @@ while True:
 		if action == "enchanted sword" and player.weapon != ensword and (haveitem or player.coins >= 400):
 			player.weapon = ensword
 			if haveitem:
-				print(green+"enchanted sword equipped"+white)
+				sprint(green+"enchanted sword equipped"+white)
 				player.weapon=ensword
 			else:
 				player.coins -= 400
-				print(green + "Perchased and equipped enchanted sword!"+white)
+				sprint(green + "Perchased and equipped enchanted sword!"+white)
 				inv.append(ensword)
 		if throwdarts in inv:
 			haveitem=True
@@ -223,14 +472,61 @@ while True:
 		if action == "throwing darts" and player.weapon != throwdarts and (haveitem or player.coins >= 1250):
 			player.weapon = throwdarts
 			if haveitem:
-				print(green+"throwing darts equipped"+white)
+				sprint(green+"throwing darts equipped"+white)
 				player.weapon=throwdarts
 			else:
 				player.coins -= 1250
-				print(green + "Perchased and equipped throwing darts!"+white)
+				sprint(green + "Perchased and equipped throwing darts!"+white)
 				inv.append(throwdarts)
+		if adambow in inv:
+			haveitem=True
+		else:
+			haveitem=False
+		if action == "adamantium bow" and player.weapon != adambow and (haveitem or player.coins >= 1375):
+			player.weapon = adambow
+			if haveitem:
+				sprint(green+adambow.name+" equipped"+white)
+			else:
+				player.coins -= 1375
+				sprint(green + "Perchased and equipped Adamantium bow!"+white)
+				inv.append(adambow)
+		if powersword in inv:
+			haveitem=True
+		else:
+			haveitem=False
+		if action == "power sword" and player.weapon != powersword and (haveitem or player.coins >= 2000):
+			player.weapon = powersword
+			if haveitem:
+				sprint(green+powersword.name+" equipped"+white)
+			else:
+				player.coins -= 2000
+				sprint(green + "Perchased and equipped power sword!"+white)
+				inv.append(powersword)
+		if action == "tnt" and player.coins >= 650:
+			if not tnt in inv:
+				inv.append(tnt)
+			tnt.dur += 1
+			player.coins -= 650
 		if action == "food" and player.coins >= foodcost:
 			player.food += 1
 			player.coins -= foodcost
 			foodcost += int(foodcost / 2)*difficulty
-			print(green + "Perchased a delicious meal!" + white)
+			sprint(green + "Perchased a delicious meal!" + white)
+		if (action == "repair" or action == "repair weapon") and player.coins > repaircost * (player.weapon.maxdur-player.weapon.dur) and player.weapon != stick:
+			player.coins -= repaircost * (player.weapon.maxdur-player.weapon.dur)
+			player.weapon.dur = player.weapon.maxdur
+			repaircost *= random.randint(11,19)/10
+			sprint(green + "weapon repaired to full durability!" + white)
+		if action == "lucky stick":
+			if luckystick in inv:
+				player.weapon = luckystick
+		if action == "achievements":
+			print("")
+			for i in achievements:
+				if i.completed == True:
+					print(green + i.name + white)
+				else:
+					print(i.name + ": " + str(i.progress) + "/" + str(i.maxprogress))
+			print("")
+	Arsenal.progress = len(inv)
+	achievedpoints = Arsenal.checkachieved(achievedpoints)

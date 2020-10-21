@@ -1,0 +1,80 @@
+1.0
+  -added changelog
+  -Two new enimies.
+  -One new weapon.
+  -Started acheivments.
+	  -Super Killer (kill 100 enemies)
+	  -A Mighty Arsenal (Have all weapons in your inventory)
+	  -You are the champion, my friend (win the game)
+  -Save files for acheivments.
+  -Fixes
+
+1.1
+  -Bugfixes.  
+  -More levels.
+  -Lots of new ideas!
+  -New acheivment.
+    -Mega Killer.
+  -New creature.
+  -New weapon.
+  -Some other edits.
+
+1.2
+  -New update to the shop.
+  -Fixed boss.
+  -New levels.
+  -Added to level system. 
+  -New enemy.
+  -Fixed HP glitch.
+
+1.3
+  -New creature.
+    -Madman.
+  -Bugfixes
+
+1.3.1
+  -removed unused packages
+	  -seriously why were those packages there?
+		  -(removed pypi and pymunk)
+
+1.4
+	-saves are now attached to a json file and no longer use db
+		-saves specifically what acheivements you have
+		completed!
+		
+		acheivements must be done in one run, 
+		acheivement progress will not save, it is not 
+		planned to add saving of progress right now.
+	
+	you may now also check what acheivements you have in the
+	shop!
+
+	fixed achievement Mega Killer
+
+1.4.1
+	-you may now change weapon during combat
+	-you may no longer use cheats and use save data
+		-if you cheat it automatically turns off saving.
+			-hard mode does not count as a cheat.
+
+1.4.2
+	-tnt added
+		-its a powerful one use weapon, but you can buy 
+		multiple!
+			-you must manually equip it in battle
+
+1.4.3
+	-fixed fleechances, fleeing is no longer guaranteed to work
+		-be warned: the two ghosts and angry elephant will never let you flee!
+
+1.4.4
+	-added achievement Escaping Doom!
+		-beat the game on hard! (using sdhrd)
+	-secret easter egg shhhh
+		-checking the code is cheating... yea I see you peaking
+
+1.4.5
+  -Fixed glitch with new hard acheivment.
+
+1.4.6
+	-made it so the screen clear at the beginning theoretically would work if you put this on a windows vm rather then repl.it's linux vm.

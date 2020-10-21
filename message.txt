@@ -1,0 +1,116 @@
+
+maybe we could get a few more on the team im not sure though
+I original developed this alone and had not planned on making it a multiplayer project
+lets also make achievements so there is a perpose to the database saving
+one more thing, to make a new level you have to make more enemies then change the level up thing to higher max level what enemies you get is based on your level so if you dont add more it throws an error when it tries to pick level from list enemies.
+added maxlevel variable to be what level you need to win!
+-seamus
+
+
+Good idea, i might work on some new enimies. I will try to find a way to make more levels without crashing. New creatures, giant skeleton, Phantom.-
+-funnylamma
+
+btw flee chance doesnt work for some reason, you always succeed your flee not sure why
+nice job making more enemies
+btw the phantom is weaker then a ghost, not sure if this is on perpose
+-seamus
+
+it was invalid syntax because the variable started with a number lol 
+-seamus
+
+btw if we make the angry elephant not the final boss, the maxhp has to be lowered to its hp to limit how much gold it gives you and so it doesnt have that much hp when its encountered again.
+-seamus
+
+
+Sorry, I was gone for a while on a vacation. I am back now though so i will work on it when I can. I made a new achievment too, mega killer, kill 1000 monsters. ANd a new weapon and enemy. I don't know how to put it into the game shop and use it in the game though, can you do that.
+-funnylamma
+
+
+
+Sorry that I had to unexpectedly go yesterday. Anyways im gonna start working on being able to get a critical. And also, it didnt save my progress.
+-funnylamma
+
+
+we need to overhaul the achivement system... It only saves pts so you can get the same achievement infinitely in infinite runs, and the system isnt really intiutive.
+-seamus
+
+Okay, i can work on that after school today.
+-funnylamma
+
+what if we store it in json?
+example:
+{
+	"<playername>"{
+		"achievement1":true,
+		"achievement2":false,
+		"achievement3":false
+	}
+	"<playername2>"{
+		"achievement1":false,
+		"achievement2":false,
+		"achievement3":true,
+	}
+}
+ect ect
+we could then store what achievements have been done for what players. im not gonna start doing it until you respond. ofc you cant have an empty json file so the first bit of data would be something like: "dummy":null until we use it.
+ofc we would also need an id for the objects as json wouldnt accept a python object, for that we just use the name of the achievement.
+ps - we should probably clear this soon to save data, its not that big of a deal if you dont want to though, this file doesnt take up more than 100kb as of yet (its at 92kb currently)
+-seamus
+
+
+
+That is a very good idea, sorry i was busy yesterday. I had some unexpected homework to deal with. I can probably work on this today, but if i can't i definitly can tommarow. I delte the top few messages.
+-funnylamma
+
+awesome, ill start integrating json today after school/homework (or tommarow if need be)
+glad to hear back from you.
+ps- i said this file took up 92kb last time, I meant the repl as a whole takes up that ammount of space lol
+-seamus
+
+made saves connected to saves.json now (tested it with a kreeger save file (just a name i made up for a dnd character awhile back i like using)) a bit later ill make it so you can check your achievements in the shop.
+-seamus
+
+
+you may now check achievement progress in shop... if you want we can save other things too but at the same time if we save level that means that they wont be able to play the game so we should probably not save anything more
+-seamus
+
+I made save file entries have encoded names.
+the encyption is very basic and easy to crack but the perpose was to make it so you can't delete someones savedata at first glance, you also wouldnt be able to use their savedata. you can see the code for that in encode.py
+
+so to wrap this up basically your name (funnylamma) becomes gvoozmbnnb in saves.json, but when you type funnylamma in game it will fetch that savefile
+-seamus
+
+you can now change weapons in combat, I also made it so you can't save an cheat.
+-seamus
+
+from now on just check changelog.... not like you gonna be here anytime soon
+-you probably know who...
+
+
+I'm back, I had a rough weekend, and I couldn't use my computer, sorry. It looks like you added a lot of stuff. I can work quite often now, what should i work on though, new enimies? Again, i'm really sorry. Also i fixed a glitch with the new achievment.
+-funnylamma
+
+okay, I didnt mean for the "you probably know who..." to be as mean as it sounds to me now. anyways yea I added a lot... a lot. also what was wrong with the hardcore achivement did it just not function? also also if you are smarter then me and understand an actual encrypting library please help! the current one is made by me and kinda sucks. not entirely sure what im gonna add next! i have so many ideas like: 
+-rings
+	-buffs damage, ac ect but you can only equip one
+-traps
+	basically enemies that also damage themselves but you can also try to "disable them" (e.g. kill them because they are just self damaging enemies)
+-theif
+	a weak enemy that steals money when it attacks (about 20-30g?) and you can get 80% back when killing him.
+-different types of food
+	-steak
+		heals like food does now but really expensive 
+	-pork
+		heals to 75% hp
+	-stew
+		heals 75% of lost hp
+-and lastly enemy weakness and strengths
+	e.g. zombies are weaker to swords and skeletons are more resistant to bows
+what do you think?
+-§eamus
+
+That works for me, and I don't know how to encrypting libraray function either, sorry. The achievment had an issue, where the was a missing end parenthesis. Those are a lot of incredebly great ideas, and i really like the idea of rings, and traps. More types of food also should be pretty good too. I will start working on that later today. And also, maybe we should add armor. Can you also invite me as a collaberator to the github project. IM going to make a food class. Umm, also, the stick dealt 100 damage. I have some ideas too. Critical hits would be a good thing too add, and maybe also a systym that makes it so if you earn an acheivment, it gives you a permenent bonus on all games.
+-funnylamma
+
+crits are a good idea! and the repl isn't connected to a github. I don't know how to use it! your food class was using an argument variable that didn't exist (hprestore) but I replaced it with what i thought you meant (hp). I'd love to help add some of these features after school!
+-§eamus
