@@ -113,4 +113,7 @@ That works for me, and I don't know how to encrypting libraray function either, 
 -funnylamma
 
 crits are a good idea! and the repl isn't connected to a github. I don't know how to use it! your food class was using an argument variable that didn't exist (hprestore) but I replaced it with what i thought you meant (hp). I'd love to help add some of these features after school!
+
+scratch what i said about git, I made a github, I donno how to add you yet! I also dont really know how it works but I guess ill have to learn... I think you can just push a version from the version controll tab under the files tab
+
 -§eamus
