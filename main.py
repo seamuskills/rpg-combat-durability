@@ -36,6 +36,7 @@ class Acheivment:
 		if self.progress >= self.maxprogress and not self.completed:
 			print(green + "you got an achivement: " + self.name,end = "\n\n")
 			currpoints += self.acheivmentpoints
+			player.coins += 1
 			saveach(self.name)
 			self.completed = True
 			return currpoints
@@ -53,16 +54,21 @@ class Weapon:
 		self.maxdur = durability
 
 class Creature:
-	def __init__(self,hp,ac,weapon,name,coins,maxhp):
+	def __init__(self,hp,ac,weapon,name,coins,maxhp, player=False):
 		self.hp = hp
 		self.ac = ac
 		self.weapon = weapon
 		self.name = name
 		self.maxhp = maxhp
 		self.coins = coins
+		self.player = player
 	def attack(self,enemy):
 		if combat == True:
 			damage = random.randint(self.weapon.mindamage,self.weapon.maxdamage)
+			if self.player == True:
+				for i in achievements:
+					if i.completed == True:
+						damage += 1
 			if enemy.ac > self.weapon.hitchance:
 				enemy.hp -= round(damage - (damage * enemy.ac),1)
 			else:
@@ -86,6 +92,7 @@ class Food:
     self.hp = hp
     self.name = name
     self.text = text
+
 
 
 cg = input("see change log?(y/n)\n")
@@ -146,7 +153,7 @@ madman.fleechance = 0.2
 enemies = [skeleton,zombie,zomknight,armoredskeleton,zomnin,armoredninja,giant,ghost,enghost, giantskeleton, phantom, assasain, elephant, crazedbear, madman]
 maxlevel = len(enemies)-1
 
-player = Creature(100,random.randint(10,25)/100,stick,input("name your hero\n"),0,100)
+player = Creature(100,random.randint(10,25)/100,stick,input("name your hero\n"),0,100,True)
 player.xp = 0
 player.level = 1
 player.food=3
@@ -243,6 +250,7 @@ if ec(player.name) in saves:
 			an = achievements[i].name
 			if save[an] == True:
 				achievements[i].completed = True
+				player.coins += 100
 		else:
 			save[achievements[i]] = False
 	if not cheated:

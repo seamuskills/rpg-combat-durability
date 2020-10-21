@@ -77,4 +77,9 @@
   -Fixed glitch with new hard acheivment.
 
 1.4.6
-	-made it so the screen clear at the beginning theoretically would work if you put this on a windows vm rather then repl.it's linux vm.
+	-Made it so the screen clear at the beginning theoretically would work if you put this on a windows vm rather then repl.it's linux vm.
+
+1.4.7
+  -Every time you get an achievement, it adds a small gold boost to the start of every game, we will expand more on this feature later.
+  -Started working on Crits.
+  -Started working on a new secret update.
