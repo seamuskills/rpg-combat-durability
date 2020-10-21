@@ -82,4 +82,8 @@
 1.4.7
   -Every time you get an achievement, it adds a small gold boost to the start of every game, we will expand more on this feature later.
   -Started working on Crits.
-  -Started working on a new secret update.
+  -Started working on a new secret update. ;)
+
+1.4.8
+	-Critical hits!
+	-New enemy, Wrestler.

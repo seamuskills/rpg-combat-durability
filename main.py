@@ -68,7 +68,10 @@ class Creature:
 			if self.player == True:
 				for i in achievements:
 					if i.completed == True:
-						damage += 1
+						damage += 1#gift 1 pts damage for every achievement
+			if random.randint(5,50) == 1:
+				damage *= 3
+				print(green + "CRITICAL HIT!" + white)#crits
 			if enemy.ac > self.weapon.hitchance:
 				enemy.hp -= round(damage - (damage * enemy.ac),1)
 			else:
@@ -150,6 +153,8 @@ crazedbear=Creature(750,0.5, powersword, "Crazed Bear", 3000, 750)
 crazedbear.fleechance = 0.1
 madman=Creature(1000,0.6, powersword, "Mad Man", 5000, 1000)
 madman.fleechance = 0.2
+wrestler = Creature(1250, 0, sword, "Wrestler", 7500, 1250)
+wrestler.fleechance = 0.1
 enemies = [skeleton,zombie,zomknight,armoredskeleton,zomnin,armoredninja,giant,ghost,enghost, giantskeleton, phantom, assasain, elephant, crazedbear, madman]
 maxlevel = len(enemies)-1
 
