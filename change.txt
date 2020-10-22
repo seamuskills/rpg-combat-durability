@@ -89,5 +89,5 @@
 	-New enemy, Wrestler.
 
 1.4.9
-	-fixed Wrestler
-	-fixed achievement: Escaping Doom
+	-Fixed Wrestler
+	-Fixed achievement: Escaping Doom
