@@ -19,7 +19,6 @@ def sprint(text, wait=0.05):
 		time.sleep(wait)
 	print("")
 
-
 achievements = []
 class Acheivment:
 	def __init__(self,maxprogress,name):
@@ -89,16 +88,19 @@ class Creature:
 			else:
 				return True
 
+foods = []
 
 class Food:
-	def _init__(self,hp,name,text,cost,perc=False):
+	def __init__(self,hp,name,text,cost,perc=False):
 		self.hp = hp
 		self.name = name
 		self.text = text
 		self.perc = perc
+		self.cost = cost
 		self.ammount = 0
 		if perc == True:
 			hp //= 100
+		foods.append(self)
 
 steak = Food(100,"steak","The steak was cooked perfectly.",300,True)
 steak.ammount = 3
@@ -177,7 +179,7 @@ player = Creature(100,random.randint(10,25)/100,stick,input("name your hero\n"),
 player.ring = None
 player.xp = 0
 player.level = 1
-player.food=3
+foodinv = [steak]
 
 cheat = True
 cheated = False
@@ -238,7 +240,7 @@ while cheat:
 #get 100 kills
 kill100 = Acheivment(100,"Super Killer")
 #get 1000 kills
-kill1000 = Acheivment(1000,"Mega Killer,")
+kill1000 = Acheivment(1000,"Mega Killer,")#I wonder if this is even possible...
 #get all weapons
 Arsenal = Acheivment(len(weapons),"A Mighty Arsenal!")
 #win the Game
@@ -309,7 +311,6 @@ sprint("health: " + str(player.hp))
 sprint("armor class: " + str(player.ac))
 sprint("weapon: " + str(player.weapon.name))
 sprint(white)
-foodcost = 50
 repaircost = 5
 
 while True:
@@ -342,10 +343,18 @@ while True:
 				player.weapon = inv[random.randint(0,len(inv)-1)]
 				sprint(player.name + " equipped " + player.weapon.name + " from their inventory")
 		if action == "heal":
-			if player.food >= 1:
-				player.food -= 1
-				player.hp = player.maxhp
-				sprint("the food was really good and healed you to full hp")
+			if len(foodinv) > 0:
+				for i in foodinv:
+					print(i.name + ": " + str(i.ammount))
+				action = input("which food?\n")
+				for i in foodinv:
+					if i.name.lower() == action.lower():
+						i.ammount -= 1
+						if i.ammount < 0:
+							foodinv.remove(i)
+					
+					player.hp += i.hp
+					print(i.text)
 			else:
 				sprint("you wasted your turn looking for food that you dont have")
 		if action == "flee":
@@ -374,7 +383,6 @@ while True:
 			combat = enemy.attack(player)
 			sprint(enemy.name + "'s hp: " + str(enemy.hp))
 			sprint(player.name + "'s hp: " + str(player.hp))
-			sprint(player.name + " has " + str(player.food) + " food")
 	if player.hp <=0:
 		sprint(red + "Game Over" + white)
 		break
@@ -446,7 +454,7 @@ while True:
 			if luckystick in inv:
 				print("equip lucky stick!")
 		print("achievements")
-		print("food: " + str(foodcost) + "g")
+		print("food")
 		if player.weapon != stick and player.weapon != tnt:
 			print("repair weapon: " + str(repaircost * (player.weapon.maxdur-player.weapon.dur)) + "g")
 		print("exit" + white)
@@ -537,11 +545,22 @@ while True:
 				inv.append(tnt)
 			tnt.dur += 1
 			player.coins -= 650
-		if action == "food" and player.coins >= foodcost:
-			player.food += 1
-			player.coins -= foodcost
-			foodcost += int(foodcost / 2)*difficulty
-			sprint(green + "Perchased a delicious meal!" + white)
+		if action == "food":
+			perchaseFood = True
+			while perchaseFood:
+				for i in foods:
+					print(green + i.name + ": " + str(i.cost) + "g" + white)
+				print("exit")
+				action = input("")
+				for h in foods:
+					if action.lower() == h.name.lower() and player.coins > h.cost:
+						if not h in foodinv:
+							foodinv.append(h)
+						h.ammount += 1
+						player.coins -= h.cost
+						print("perchased " + h.name)
+					if action == "exit":
+						perchaseFood = False
 		if (action == "repair" or action == "repair weapon") and player.coins > repaircost * (player.weapon.maxdur-player.weapon.dur) and player.weapon != stick:
 			player.coins -= repaircost * (player.weapon.maxdur-player.weapon.dur)
 			player.weapon.dur = player.weapon.maxdur

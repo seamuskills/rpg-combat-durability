@@ -91,3 +91,8 @@
 1.4.9
 	-Fixed Wrestler
 	-Fixed achievement: Escaping Doom
+
+1.5.0
+	-Added food variety!
+		-Different foods heal different ammounts and cost different ammounts too
+	-Planned: Cooking raw meat

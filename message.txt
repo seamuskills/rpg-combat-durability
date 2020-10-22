@@ -127,6 +127,3 @@ go to version controll, type a description, and hit the button that says push, t
 
 I started the wiki on github. when you add something update the appropriate page. I am still adding pages so not everything is there yet. so far I have enemies and ac/ap
 -§eamus
-
-sorry I had to go to lunch
--§eamus
