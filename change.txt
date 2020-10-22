@@ -96,3 +96,4 @@
 	-Added food variety!
 		-Different foods heal different amounts and cost different amounts too.
 	-Planned: Cooking raw meat.
+  -Bug Fixes.
