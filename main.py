@@ -100,6 +100,11 @@ class Food:
       hp //= 100
 
 steak = Food(100,"steak","The steak was cooked perfectly.",True)
+apple = Food(20,"apple","The apple was good but isn't very satisfying.")
+pork = Food(75,"porkchop","The pork was amazing!",True)
+chicken = Food(75,"chicken leg","The chicken leg was great and satisfying!")
+rsteak = Food(50,"raw steak","The raw steak was not very good for you.",True)
+rpork = Food(-30,"raw pork","It is not good for you at all, maybe cook it next time.")
 
 cg = input("see change log?(y/n)\n")
 print("")
