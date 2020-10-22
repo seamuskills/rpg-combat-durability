@@ -94,5 +94,5 @@
 
 1.5.0
 	-Added food variety!
-		-Different foods heal different ammounts and cost different ammounts too
-	-Planned: Cooking raw meat
+		-Different foods heal different amounts and cost different amounts too.
+	-Planned: Cooking raw meat.
