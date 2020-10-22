@@ -91,12 +91,15 @@ class Creature:
 
 
 class Food:
-  def _init__(self,hp,name,text):
+  def _init__(self,hp,name,text,perc=False):
     self.hp = hp
     self.name = name
     self.text = text
+    self.perc = perc
+    if perc == True:
+      hp //= 100
 
-
+steak = Food(100,"steak","The steak was cooked perfectly.",True)
 
 cg = input("see change log?(y/n)\n")
 print("")
@@ -158,10 +161,14 @@ wrestler.fleechance = 0.1
 enemies = [skeleton,zombie,zomknight,armoredskeleton,zomnin,armoredninja,giant,ghost,enghost, giantskeleton, phantom, assasain,wrestler, elephant, crazedbear, madman]
 maxlevel = len(enemies)-1
 
+
+
 player = Creature(100,random.randint(10,25)/100,stick,input("name your hero\n"),0,100,True)
+player.ring = None
 player.xp = 0
 player.level = 1
 player.food=3
+
 cheat = True
 cheated = False
 difficulty = 1
