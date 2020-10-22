@@ -155,7 +155,7 @@ madman=Creature(1000,0.6, powersword, "Mad Man", 5000, 1000)
 madman.fleechance = 0.2
 wrestler = Creature(1250, 0, sword, "Wrestler", 7500, 1250)
 wrestler.fleechance = 0.1
-enemies = [skeleton,zombie,zomknight,armoredskeleton,zomnin,armoredninja,giant,ghost,enghost, giantskeleton, phantom, assasain, elephant, crazedbear, madman]
+enemies = [skeleton,zombie,zomknight,armoredskeleton,zomnin,armoredninja,giant,ghost,enghost, giantskeleton, phantom, assasain,wrestler, elephant, crazedbear, madman]
 maxlevel = len(enemies)-1
 
 player = Creature(100,random.randint(10,25)/100,stick,input("name your hero\n"),0,100,True)
@@ -387,7 +387,7 @@ while True:
 					sprint(red + "next time try hard mode >:D (name your hero sdhrd!). durability goes away twice as fast and food cost grows way quicker! Are you up to the challenge?" + white)
 				if difficulty == 2:
 					Hwin.progress = 1
-					achievedpoints = Hwin.checkachieved()
+					achievedpoints = Hwin.checkachieved(achievedpoints)
 					sprint(green + "great job! Have some fun with a lot of money just name yourself sdccc! you can even make it hard mode and give yourself the money cheat! have fun :)" + white)
 				break
 	shop = True
