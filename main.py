@@ -356,6 +356,8 @@ while True:
 						player.hp += i.hp
 					else:
 						player.hp += player.maxhp/i.hp
+						if player.hp > player.maxhp:
+							player.hp = player.maxhp
 					print(i.text)
 			else:
 				sprint("you wasted your turn looking for food that you dont have")
