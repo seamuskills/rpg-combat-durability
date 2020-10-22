@@ -91,20 +91,24 @@ class Creature:
 
 
 class Food:
-  def _init__(self,hp,name,text,perc=False):
-    self.hp = hp
-    self.name = name
-    self.text = text
-    self.perc = perc
-    if perc == True:
-      hp //= 100
+	def _init__(self,hp,name,text,cost,perc=False):
+		self.hp = hp
+		self.name = name
+		self.text = text
+		self.perc = perc
+		self.ammount = 0
+		if perc == True:
+			hp //= 100
 
-steak = Food(100,"steak","The steak was cooked perfectly.",True)
-apple = Food(20,"apple","The apple was good but isn't very satisfying.")
-pork = Food(75,"porkchop","The pork was amazing!",True)
-chicken = Food(75,"chicken leg","The chicken leg was great and satisfying!")
-rsteak = Food(50,"raw steak","The raw steak was not very good for you.",True)
-rpork = Food(-30,"raw pork","It is not good for you at all, maybe cook it next time.")
+steak = Food(100,"steak","The steak was cooked perfectly.",300,True)
+steak.ammount = 3
+apple = Food(20,"apple","The apple was good but isn't very satisfying.",50)
+pork = Food(75,"porkchop","The pork was amazing!",150,True)
+chicken = Food(75,"chicken leg","The chicken leg was great and satisfying!",100)
+rsteak = Food(75,"raw steak","The raw steak was not very good for you.",150)
+rpork = Food(-30,"raw pork","It is not good for you at all, maybe cook it next time.",50)
+rchicken = Food(-50,"Raw chicken leg","Salmanila is not very health...",35)
+cookie = Food(10,"cookie","The cookie was really good but not very satisfying.",10,True)
 
 cg = input("see change log?(y/n)\n")
 print("")
@@ -126,8 +130,9 @@ tnt=Weapon(1,300,650,"tnt","You feel the shockwave pulse through your body!","Yo
 hsknife = Weapon(1,30,50,"Heat seeking knife","You miss but the knife htis anyway.","How does this even work!","You almost strike yourself, but the knife guides your hand to the enemy!",30)
 luckystick=Weapon(0.7,300,1000,"lucky stick","Your stick feels lucky!","You feel the luck in your bones!","Does fortune favor you?",random.randint(10,15))#this stick cant be bought, it can be found every combat, but its only a very slim chance of finding it. its a fun thing that can make each run just that extra bit unique.
 
-weapons = [stick,sword,ensword,bow,throwdarts,adambow,powersword]
+weapons = [sword,ensword,bow,throwdarts,adambow,powersword]
 inv = [stick]
+foodinv = []
 
 acheivments = 0
 skeleton = Creature(20,0.1,bow,"Skeleton",100,20)
