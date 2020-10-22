@@ -352,8 +352,10 @@ while True:
 						i.ammount -= 1
 						if i.ammount < 0:
 							foodinv.remove(i)
-					
-					player.hp += i.hp
+					if i.perc == False:
+						player.hp += i.hp
+					else:
+						player.hp += player.maxhp/i.hp
 					print(i.text)
 			else:
 				sprint("you wasted your turn looking for food that you dont have")
