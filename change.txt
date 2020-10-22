@@ -87,3 +87,7 @@
 1.4.8
 	-Critical hits!
 	-New enemy, Wrestler.
+
+1.4.9
+	-fixed Wrestler
+	-fixed achievement: Escaping Doom
