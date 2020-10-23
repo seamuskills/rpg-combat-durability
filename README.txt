@@ -8,7 +8,7 @@ the original game didn't have durability, you can find that version in my repl.i
 enough change that I forked the project to make this one
 eventually I abandoned the old project and kept updating this!
 thats when a repl user by the name of funnylamma joined me for developement (his current repl profile is called thewaydu). 
-from there I just kept adding features untill we have what we have here, were I made a github for it!
+from there I just kept adding features untill we have what we have here, where I made a github for it!
 
 #gameplay
 --
