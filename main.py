@@ -26,9 +26,6 @@ class Acheivment:
 		self.name = name
 		self.completed = False
 		achievements.append(self)
-	def maxachive(self, acheivmentpoints):
-		if acheivmentpoints == 50:
-			maxachievments = True
 	def checkachieved(self,currpoints):
 		if self.progress >= self.maxprogress and not self.completed:
 			print(green + "you got an achivement: " + self.name,end = "\n\n")
