@@ -6,8 +6,6 @@ except:
 	os.system("cls")
 del os
 
-#see message.txt!
-
 combat = False
 green = "\033[32m "
 white = '\033[37m '
@@ -67,7 +65,7 @@ class Creature:
 			if self.player == True:
 				for i in achievements:
 					if i.completed == True:
-						damage += 1#gift 1 pts damage for every achievement
+						damage += 10#gift 10 pts damage for every achievement
 			if random.randint(5,50) == 1:
 				damage *= 3
 				print(green + "CRITICAL HIT!" + white)#crits
@@ -135,6 +133,8 @@ luckystick=Weapon(0.7,300,1000,"lucky stick","Your stick feels lucky!","You feel
 weapons = [sword,ensword,bow,throwdarts,adambow,powersword]
 inv = [stick]
 foodinv = []
+
+
 
 acheivments = 0
 skeleton = Creature(20,0.1,bow,"Skeleton",100,20)

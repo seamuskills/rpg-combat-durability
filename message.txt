@@ -127,3 +127,6 @@ go to version controll, type a description, and hit the button that says push, t
 
 I started the wiki on github. when you add something update the appropriate page. I am still adding pages so not everything is there yet. so far I have enemies and ac/ap
 -§eamus
+
+ever wonder if we need to give this game a proper name? not sure. also not sure how hard it would be to rebrand everything. also we probably should move saves to another repl, so that 
+-§eamus
