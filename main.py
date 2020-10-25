@@ -86,13 +86,16 @@ class Creature:
 foods = []
 
 class Food:
-	def __init__(self,hp,name,text,cost,perc=False):
+	def __init__(self,hp,name,text,cost,perc=False,cfood=False):
 		self.hp = hp
 		self.name = name
 		self.text = text
 		self.perc = perc
 		self.cost = cost
 		self.ammount = 0
+		if "raw" in self.name:
+			self.turnscooked=0
+			self.cfood = cfood
 		if perc == True:
 			hp //= 100
 		foods.append(self)
@@ -102,9 +105,9 @@ steak.ammount = 3
 apple = Food(20,"apple","The apple was good but isn't very satisfying.",50)
 pork = Food(75,"porkchop","The pork was amazing!",150,True)
 chicken = Food(75,"chicken leg","The chicken leg was great and satisfying!",100)
-rsteak = Food(75,"raw steak","The raw steak was not very good for you.",150)
-rpork = Food(-30,"raw pork","It is not good for you at all, maybe cook it next time.",50)
-rchicken = Food(-50,"Raw chicken leg","Salmanila is not very health...",35)
+rsteak = Food(75,"raw steak","The raw steak was not very good for you.",150,False,steak)
+rpork = Food(-30,"raw pork","It is not good for you at all, maybe cook it next time.",50,False,pork)
+rchicken = Food(-50,"raw chicken leg","Salmanila is not very health...",35,False,chicken)
 cookie = Food(10,"cookie","The cookie was really good but not very satisfying.",10,True)
 
 cg = input("see change log?(y/n)\n")
@@ -130,8 +133,6 @@ luckystick=Weapon(0.7,300,1000,"lucky stick","Your stick feels lucky!","You feel
 weapons = [sword,ensword,bow,throwdarts,adambow,powersword]
 inv = [stick]
 foodinv = []
-
-
 
 acheivments = 0
 skeleton = Creature(20,0.1,bow,"Skeleton",100,20)
@@ -169,8 +170,6 @@ wrestler = Creature(1250, 0, sword, "Wrestler", 7500, 1250)
 wrestler.fleechance = 0.1
 enemies = [skeleton,zombie,zomknight,armoredskeleton,zomnin,armoredninja,giant,ghost,enghost, giantskeleton, phantom, assasain,wrestler, elephant, crazedbear, madman]
 maxlevel = len(enemies)-1
-
-
 
 player = Creature(100,random.randint(10,25)/100,stick,input("name your hero\n"),0,100,True)
 player.ring = None
@@ -352,7 +351,7 @@ while True:
 					if i.perc == False:
 						player.hp += i.hp
 					else:
-						player.hp += player.maxhp/i.hp
+						player.hp += player.maxhp*i.hp
 						if player.hp > player.maxhp:
 							player.hp = player.maxhp
 					print(i.text)
@@ -384,6 +383,20 @@ while True:
 			combat = enemy.attack(player)
 			sprint(enemy.name + "'s hp: " + str(enemy.hp))
 			sprint(player.name + "'s hp: " + str(player.hp))
+		for i in foodinv:
+			if "raw" in i.name:
+				if i.turnscooked < 3:
+					i.turnscooked += 1
+					print("your " + i.name + " has " + str(abs(i.turnscooked-2)) + " turn(s) left to cook!")
+				else:
+					i.turnscooked = 0
+					i.ammount -= 1
+					if i.ammount == 0:
+						foodinv.remove(i)
+					if not i.cfood in foodinv:
+						foodinv.append(i.cfood)
+					i.cfood.ammount += 1
+					print(green + "your " + i.name + " has cooked!" + white)
 	if player.hp <=0:
 		sprint(red + "Game Over" + white)
 		break
@@ -554,7 +567,7 @@ while True:
 				print("exit")
 				action = input("")
 				for h in foods:
-					if action.lower() == h.name.lower() and player.coins > h.cost:
+					if action.lower() == h.name.lower() and player.coins >= h.cost:
 						if not h in foodinv:
 							foodinv.append(h)
 						h.ammount += 1
