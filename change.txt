@@ -97,3 +97,7 @@
 		-Different foods heal different amounts and cost different amounts too.
 	-Planned: Cooking raw meat.
   -Bug Fixes.
+
+1.5.1
+	-raw food now cooks after 3 turns!
+	-raw chicken can now be perchased
