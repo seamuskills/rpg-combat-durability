@@ -1,4 +1,4 @@
-https://rpg-combat-durability.seamusdonahue.repl.run <Game Link
+https://rpg-combat-durability.seamusdonahue.repl.run <Link to the game
 
 # rpg-combat-durability
 the github project for my repl.it project: "rpg combat durability"!
