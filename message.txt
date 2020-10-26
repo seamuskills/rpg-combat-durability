@@ -136,3 +136,7 @@ omg omg omg I have a big brain idea:
 so basically json.dumps() turns a string (that is in json format) into a python dictionary, so in theory this would be possible, but only if you can write to .env files also should we add audio to the game? if so I have some ideas on how to record files for the audio >:), audio however is still in beta so only explorers can use it (I am an explorer but idk if you are, and if you arn't idk if I can do it).
 ps just looked it up, .env variables are constants so they can be written to, ignore my save file idea.
 -§eamus
+
+
+That is an amazing idea, that would work execlently, but i'm worried about how much space it would take up. BUt it  would be a good idea, and I think it will work pretty well, maybe it could be put in the 1.6 update?
+-funnyl@mma
