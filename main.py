@@ -109,6 +109,7 @@ rsteak = Food(75,"raw steak","The raw steak was not very good for you.",150,Fals
 rpork = Food(-30,"raw pork","It is not good for you at all, maybe cook it next time.",50,False,pork)
 rchicken = Food(-50,"raw chicken leg","Salmanila is not very health...",35,False,chicken)
 cookie = Food(10,"cookie","The cookie was really good but not very satisfying.",10,True)
+bacon = Food(30,"beacon","The bacon is delicous but not very healthy...",75)
 
 cg = input("see change log?(y/n)\n")
 print("")
