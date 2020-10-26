@@ -130,3 +130,9 @@ I started the wiki on github. when you add something update the appropriate page
 
 ever wonder if we need to give this game a proper name? not sure. also not sure how hard it would be to rebrand everything. also we probably should move saves to another repl, so that 
 -§eamus
+
+omg omg omg I have a big brain idea:
+	we store saves in a .env so we dont have to encrypt them! (i just learned .env files are secret to those who do not own the repl).
+so basically json.dumps() turns a string (that is in json format) into a python dictionary, so in theory this would be possible, but only if you can write to .env files also should we add audio to the game? if so I have some ideas on how to record files for the audio >:), audio however is still in beta so only explorers can use it (I am an explorer but idk if you are, and if you arn't idk if I can do it).
+ps just looked it up, .env variables are constants so they can be written to, ignore my save file idea.
+-§eamus

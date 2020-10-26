@@ -1,4 +1,3 @@
-
 def ec(string):
 	news = ""
 	for i in range(len(string)):
