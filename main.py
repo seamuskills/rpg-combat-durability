@@ -169,7 +169,9 @@ madman=Creature(1000,0.6, powersword, "Mad Man", 5000, 1000)
 madman.fleechance = 0.2
 wrestler = Creature(1250, 0, sword, "Wrestler", 7500, 1250)
 wrestler.fleechance = 0.1
-enemies = [skeleton,zombie,zomknight,armoredskeleton,zomnin,armoredninja,giant,ghost,enghost, giantskeleton, phantom, assasain,wrestler, elephant, crazedbear, madman]
+attackbear = Creature(1500, 0, ensword, "Attack Bear", 10000, 1500)
+attackbear.fleechance = 0
+enemies = [skeleton,zombie,zomknight,armoredskeleton,zomnin,armoredninja,giant,ghost,enghost, giantskeleton, phantom, assasain,wrestler, elephant, crazedbear, madman, wrestler, attackbear]
 maxlevel = len(enemies)-1
 
 player = Creature(100,random.randint(10,25)/100,stick,input("name your hero\n"),0,100,True)

@@ -101,3 +101,8 @@
 1.5.1
 	-raw food now cooks after 3 turns!
 	-raw chicken can now be perchased
+
+1.5.2
+  -2 new enimies!
+    -Wrestler
+    -Attack Bear
