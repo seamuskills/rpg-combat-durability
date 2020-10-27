@@ -140,3 +140,11 @@ ps just looked it up, .env variables are constants so they can be written to, ig
 
 That is an amazing idea, that would work execlently, but i'm worried about how much space it would take up. BUt it  would be a good idea, and I think it will work pretty well, maybe it could be put in the 1.6 update?
 -funnyl@mma
+
+adding audio would bloat the gamesize i think but that all depends on how many sounds and their duration.
+also idk what it is but it isn't functioning for me: https://repl.it/@SeamusDonahue/test-sound#main.py
+-§eamus
+
+
+IM sorry for kind of like taking over your game, you can update it how you want too.
+-FunnyL@mma
