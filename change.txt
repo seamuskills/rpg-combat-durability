@@ -103,6 +103,6 @@
 	-raw chicken can now be perchased
 
 1.5.2
-  -2 new enimies!
+  -2 new enemies!
     -Wrestler
     -Attack Bear
