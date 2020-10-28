@@ -40,4 +40,5 @@ when naming yourself, you can name yourself many things that do stuff.
 I call these cheat codes!
 warning! achievement progress cannot be saved if you use cheats
 oh you want me to tell you what they are? find out yourself ;)
+#more update scoming soon!
 #most importantly have fun!
