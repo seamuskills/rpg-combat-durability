@@ -111,6 +111,7 @@ rchicken = Food(-50,"raw chicken leg","Salmanila is not very health...",35,False
 cookie = Food(10,"cookie","The cookie was really good but not very satisfying.",10,True)
 bacon = Food(30,"beacon","The bacon is delicous but not very healthy...",75)
 bread = Food(25,"bread","The bread was pretty good.",30,True)
+spagetti = Food(20,"Spagetti","The spagetti was spagetti",40,True)
 
 cg = input("see change log?(y/n)\n")
 print("")

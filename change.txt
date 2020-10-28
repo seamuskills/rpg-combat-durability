@@ -106,3 +106,8 @@
   -2 new enemies!
     -Wrestler
     -Attack Bear
+
+1.5.3
+	-2 new foods
+		-bread
+		-spagetti
