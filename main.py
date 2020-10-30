@@ -38,7 +38,7 @@ class Acheivment:
 			return currpoints
 
 class Weapon:
-	def __init__(self,hitchance,mindamage,maxdamage,name,attackone,attacktwo,attackthree,durability):
+	def __init__(self,hitchance,mindamage,maxdamage,name,attackone,attacktwo,attackthree,durability,cost):
 		self.hitchance = hitchance
 		self.mindamage = mindamage
 		self.maxdamage = maxdamage
@@ -46,6 +46,7 @@ class Weapon:
 		self.attacktext = [attackone,attacktwo,attackthree]
 		self.dur = durability
 		self.maxdur = durability
+		self.cost = cost
 
 class Creature:
 	def __init__(self,hp,ac,weapon,name,coins,maxhp, player=False):
@@ -72,7 +73,7 @@ class Creature:
 				enemy.hp -= round(damage - ((damage * enemy.ac)/2),1)
 			if enemy.hp <= 0:
 				if enemy == player:
-					sprint("Game Over")
+					sprint("Game Over",0.1)
 				else:
 					enemy.hp = enemy.maxhp
 				sprint(enemy.name + " defeated")
@@ -112,6 +113,7 @@ cookie = Food(10,"cookie","The cookie was really good but not very satisfying.",
 bacon = Food(30,"beacon","The bacon is delicous but not very healthy...",75)
 bread = Food(25,"bread","The bread was pretty good.",30,True)
 spagetti = Food(20,"Spagetti","The spagetti was spagetti",40,True)
+dough = Food(10,"raw dough","although it tasted good, it would have been better if you had cooked it",15,False,bread)
 
 cg = input("see change log?(y/n)\n")
 print("")
@@ -122,16 +124,16 @@ if cg == "y":
 	cg.close()
 	print("")
 
-stick=Weapon(0.1,5,20,"Stick","You poke it with a stick! It was slightly annoyed.","You plunge the stick into its flesh! It wasnt impressed.","As the stick went into its chest, it laughed at you!",10000000)
-sword=Weapon(0.3,15,35,"Sword","You swing your sword peircing its skin!","As you plunge your blade into its stomach, it yells at you!","You swing the sword with all your might! The hit proved effective.",25)
-ensword=Weapon(0.3,30,50,"Enchanted Sword","The sword seems to cut the enemy unusually well.","It seems that the enchanted sword cuts flesh and bone with little effort.","With a mighty strike the enchanted sword cleaves through the enemy!",37)
-bow=Weapon(0.3,20,35,"Bow","Your bow shot hits! The enemy yelps at the arrow imbedded in it!","Your arrow wooshes through the air and embeds in your enemy!","Those archery classes really paid off!",75)
-throwdarts=Weapon(0.3,75,135,"throwing darts","As the dart embedds into your enemy, you realize that they do way more damage then you thought.","Your accuracy is impeccable!","The enemy doesn't seem intimidated untill you sink a dart into them.",50)
-adambow=Weapon(0.5,80,145,"adamantium bow","You hit the enemy with the arrow, It seemed effective","your arrow peirces them with little effort!","the enemy was mortally wounded by your attack",100)
-powersword=Weapon(0.5, 100, 150, "power sword","You swing the Power sword and dig it into the creature.","The enemy is impaled by your sword.","The sword goes into your enemy's chest, it's injured.", 100)
-tnt=Weapon(1,300,650,"tnt","You feel the shockwave pulse through your body!","Your ears ring at the massive explosion.","You chuck the tnt at the enemy, you shield your eyes from the bright blast.",0)
-hsknife = Weapon(1,30,50,"Heat seeking knife","You miss but the knife htis anyway.","How does this even work!","You almost strike yourself, but the knife guides your hand to the enemy!",30)
-luckystick=Weapon(0.7,300,1000,"lucky stick","Your stick feels lucky!","You feel the luck in your bones!","Does fortune favor you?",random.randint(10,15))#this stick cant be bought, it can be found every combat, but its only a very slim chance of finding it. its a fun thing that can make each run just that extra bit unique.
+stick=Weapon(0.1,5,20,"Stick","You poke it with a stick! It was slightly annoyed.","You plunge the stick into its flesh! It wasnt impressed.","As the stick went into its chest, it laughed at you!",10000000,0)
+sword=Weapon(0.3,15,35,"Sword","You swing your sword peircing its skin!","As you plunge your blade into its stomach, it yells at you!","You swing the sword with all your might! The hit proved effective.",25,200)
+ensword=Weapon(0.3,30,50,"Enchanted Sword","The sword seems to cut the enemy unusually well.","It seems that the enchanted sword cuts flesh and bone with little effort.","With a mighty strike the enchanted sword cleaves through the enemy!",37,400)
+bow=Weapon(0.3,20,35,"Bow","Your bow shot hits! The enemy yelps at the arrow imbedded in it!","Your arrow wooshes through the air and embeds in your enemy!","Those archery classes really paid off!",75,700)
+throwdarts=Weapon(0.3,75,135,"throwing darts","As the dart embedds into your enemy, you realize that they do way more damage then you thought.","Your accuracy is impeccable!","The enemy doesn't seem intimidated untill you sink a dart into them.",50,1250)
+adambow=Weapon(0.5,80,145,"adamantium bow","You hit the enemy with the arrow, It seemed effective","your arrow peirces them with little effort!","the enemy was mortally wounded by your attack",100,1375)
+powersword=Weapon(0.5, 100, 150, "power sword","You swing the Power sword and dig it into the creature.","The enemy is impaled by your sword.","The sword goes into your enemy's chest, it's injured.", 100,2000)
+tnt=Weapon(1,300,650,"tnt","You feel the shockwave pulse through your body!","Your ears ring at the massive explosion.","You chuck the tnt at the enemy, you shield your eyes from the bright blast.",0,650)
+hsknife = Weapon(1,30,50,"Heat seeking knife","You miss but the knife htis anyway.","How does this even work!","You almost strike yourself, but the knife guides your hand to the enemy!",30,0)
+luckystick=Weapon(0.7,300,1000,"lucky stick","Your stick feels lucky!","You feel the luck in your bones!","Does fortune favor you?",random.randint(10,15),0)#this stick cant be bought, it can be found every combat, but its only a very slim chance of finding it. its a fun thing that can make each run just that extra bit unique.
 
 weapons = [sword,ensword,bow,throwdarts,adambow,powersword]
 inv = [stick]
@@ -438,36 +440,11 @@ while True:
 	while shop:
 		print(player.name + " has " + str(player.coins) + "g")
 		sprint("welcome to the shop would you like to buy something before the next fight?" + green)
-		if player.weapon != sword:
-			if sword in inv:
-				print("equip sword")
-			else:
-				print("sword:200g")
-		if player.weapon != ensword:
-			if ensword in inv:
-				print("equip enchanted sword")
-			else:
-				print("enchanted sword:400g ")
-		if player.weapon != bow:
-			if bow in inv:
-				print("equip bow")
-			else:
-				print("bow:700g")
-		if player.weapon != throwdarts:
-			if throwdarts in inv:
-				print("equip throwing darts")
-			else:
-				print("throwing darts:1250g")
-		if player.weapon != adambow:
-			if adambow in inv:
-				print("equip adamantium bow")
-			else:
-				print(adambow.name + ":1375g")
-		if player.weapon != powersword:
-			if powersword in inv:
-				print("equip power sword")
-			else:
-				print(powersword.name + ":2000g")
+		for i in weapons:
+			if i in inv and player.weapon != i:
+				print("equip "+i.name)
+			elif player.weapon != i:
+				print(i.name + ": "+str(i.cost)+"g")
 		print("tnt: 650g (you have: " + str(tnt.dur) + " tnt)")
 		if player.weapon != luckystick:
 			if luckystick in inv:
@@ -487,78 +464,17 @@ while True:
 			haveitem = True
 		else:
 			haveitem = False
-		if action == "sword" and player.weapon != sword and (player.coins >= 200 or haveitem):
-			player.weapon = sword
-			if haveitem:
-				sprint(green+"sword equipped"+white)
-				player.weapon=sword
-			else:
-				player.coins -= 200
-				sprint(green + "Perchased and equipped sword!"+white)
-				inv.append(sword)
-		if bow in inv:
-			haveitem = True
-		else:
-			haveitem = False
-		if action == "bow" and player.weapon != bow and (haveitem or player.coins >=700):
-			player.weapon = bow
-			if haveitem:
-				sprint(green+"bow equipped"+white)
-				player.weapon=bow
-			else:
-				player.coins -= 700
-				sprint(green + "Perchased and equipped bow!"+white)
-				inv.append(bow)
-		if ensword in inv:
-			haveitem=True
-		else:
-			haveitem=False
-		if action == "enchanted sword" and player.weapon != ensword and (haveitem or player.coins >= 400):
-			player.weapon = ensword
-			if haveitem:
-				sprint(green+"enchanted sword equipped"+white)
-				player.weapon=ensword
-			else:
-				player.coins -= 400
-				sprint(green + "Perchased and equipped enchanted sword!"+white)
-				inv.append(ensword)
-		if throwdarts in inv:
-			haveitem=True
-		else:
-			haveitem=False
-		if action == "throwing darts" and player.weapon != throwdarts and (haveitem or player.coins >= 1250):
-			player.weapon = throwdarts
-			if haveitem:
-				sprint(green+"throwing darts equipped"+white)
-				player.weapon=throwdarts
-			else:
-				player.coins -= 1250
-				sprint(green + "Perchased and equipped throwing darts!"+white)
-				inv.append(throwdarts)
-		if adambow in inv:
-			haveitem=True
-		else:
-			haveitem=False
-		if action == "adamantium bow" and player.weapon != adambow and (haveitem or player.coins >= 1375):
-			player.weapon = adambow
-			if haveitem:
-				sprint(green+adambow.name+" equipped"+white)
-			else:
-				player.coins -= 1375
-				sprint(green + "Perchased and equipped Adamantium bow!"+white)
-				inv.append(adambow)
-		if powersword in inv:
-			haveitem=True
-		else:
-			haveitem=False
-		if action == "power sword" and player.weapon != powersword and (haveitem or player.coins >= 2000):
-			player.weapon = powersword
-			if haveitem:
-				sprint(green+powersword.name+" equipped"+white)
-			else:
-				player.coins -= 2000
-				sprint(green + "Perchased and equipped power sword!"+white)
-				inv.append(powersword)
+		for i in weapons:
+			if action == i.name.lower() and player.weapon != i:
+				if i in inv:
+					print(green + "equipped " + i.name+white)
+					player.weapon = i
+				elif player.coins >= i.cost:
+					player.coins -= i.cost
+					player.weapon = i
+					inv.append(i)
+					print(green+"perchased and equipped "+i.name+white)
+
 		if action == "tnt" and player.coins >= 650:
 			if not tnt in inv:
 				inv.append(tnt)
