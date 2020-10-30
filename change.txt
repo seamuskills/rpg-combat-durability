@@ -111,3 +111,9 @@
 	-2 new foods
 		-bread
 		-spagetti
+
+1.5.4
+	-added raw dough
+	-reworked the shop
+		-nothing should change surface level.
+	-added play again option when dying.

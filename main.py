@@ -4,7 +4,6 @@ try:
 	os.system("clear")
 except:
 	os.system("cls")
-del os
 
 combat = False
 green = "\033[32m "
@@ -74,12 +73,17 @@ class Creature:
 			if enemy.hp <= 0:
 				if enemy == player:
 					sprint("Game Over",0.1)
+					play = input("play again(y/n)?\n")
+					if play == "y":
+						os.system("python main.py")
+					else:
+						print("goodbye.")
 				else:
 					enemy.hp = enemy.maxhp
-				sprint(enemy.name + " defeated")
-				self.hp += round((self.maxhp - self.hp)/2,1)
-				sprint(self.name + " healed half the lost hp back for winning the fight (" + str(round(self.hp,1)) +"hp)")
-				self.coins += enemy.coins
+					sprint(enemy.name + " defeated")
+					self.hp += round((self.maxhp - self.hp)/2,1)
+					sprint(self.name + " healed half the lost hp back for winning the fight (" + str(round(self.hp,1)) +"hp)")
+					self.coins += enemy.coins
 				return False
 			else:
 				return True
