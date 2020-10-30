@@ -64,7 +64,7 @@ class Creature:
 				for i in achievements:
 					if i.completed == True:
 						damage += 10#gift 10 pts damage for every achievement
-			if random.randint(5,50) == 1:
+			if random.randint(1,50) == 1:
 				damage *= 3
 				print(green + "CRITICAL HIT!" + white)#crits
 			if enemy.ac > self.weapon.hitchance:
