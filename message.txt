@@ -167,5 +167,5 @@ reworked the shop so now any weapons in the "weapons" list will be in the shop!
 Cool, earlier today had my first power issues of the year, with the waind, my power is starting to flicker a bit, so I will also be on and off.
 -FunnyL@mma
 
-Me as well. I shall add a few more weapons! due to the new shop system it is easier
+Me as well. I shall add a new weapon! due to the new shop system it is easier. I disabled the play again option due to glitches.
 -§eamus

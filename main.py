@@ -135,7 +135,7 @@ hsknife = Weapon(1,30,50,"Heat seeking knife","You miss but the knife htis anywa
 luckystick=Weapon(0.7,300,1000,"lucky stick","Your stick feels lucky!","You feel the luck in your bones!","Does fortune favor you?",random.randint(10,15),0)#this stick cant be bought, it can be found every combat, but its only a very slim chance of finding it. its a fun thing that can make each run just that extra bit unique.
 longbow = Weapon(0.65,125,175,"long bow","you draw back the bow and let loose an arrow!","the shot was effective.","You have good aim.",110,2125)
 
-weapons = [sword,ensword,bow,throwdarts,adambow,powersword]
+weapons = [sword,ensword,bow,throwdarts,adambow,powersword,longbow]
 inv = [stick]
 foodinv = []
 
