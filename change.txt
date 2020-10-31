@@ -117,3 +117,4 @@
 	-reworked the shop
 		-nothing should change surface level.
 	-added play again option when dying.
+	-added long bow

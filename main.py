@@ -129,10 +129,11 @@ ensword=Weapon(0.3,30,50,"Enchanted Sword","The sword seems to cut the enemy unu
 bow=Weapon(0.3,20,35,"Bow","Your bow shot hits! The enemy yelps at the arrow imbedded in it!","Your arrow wooshes through the air and embeds in your enemy!","Those archery classes really paid off!",75,700)
 throwdarts=Weapon(0.3,75,135,"throwing darts","As the dart embedds into your enemy, you realize that they do way more damage then you thought.","Your accuracy is impeccable!","The enemy doesn't seem intimidated untill you sink a dart into them.",50,1250)
 adambow=Weapon(0.5,80,145,"adamantium bow","You hit the enemy with the arrow, It seemed effective","your arrow peirces them with little effort!","the enemy was mortally wounded by your attack",100,1375)
-powersword=Weapon(0.5, 100, 150, "power sword","You swing the Power sword and dig it into the creature.","The enemy is impaled by your sword.","The sword goes into your enemy's chest, it's injured.", 100,2000)
+powersword=Weapon(0.5, 100, 155, "power sword","You swing the Power sword and dig it into the creature.","The enemy is impaled by your sword.","The sword goes into your enemy's chest, it's injured.", 100,2000)
 tnt=Weapon(1,300,650,"tnt","You feel the shockwave pulse through your body!","Your ears ring at the massive explosion.","You chuck the tnt at the enemy, you shield your eyes from the bright blast.",0,650)
 hsknife = Weapon(1,30,50,"Heat seeking knife","You miss but the knife htis anyway.","How does this even work!","You almost strike yourself, but the knife guides your hand to the enemy!",30,0)
 luckystick=Weapon(0.7,300,1000,"lucky stick","Your stick feels lucky!","You feel the luck in your bones!","Does fortune favor you?",random.randint(10,15),0)#this stick cant be bought, it can be found every combat, but its only a very slim chance of finding it. its a fun thing that can make each run just that extra bit unique.
+longbow = Weapon(0.65,125,175,"long bow","you draw back the bow and let loose an arrow!","the shot was effective.","You have good aim.",110,2125)
 
 weapons = [sword,ensword,bow,throwdarts,adambow,powersword]
 inv = [stick]
