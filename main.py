@@ -73,11 +73,6 @@ class Creature:
 			if enemy.hp <= 0:
 				if enemy == player:
 					sprint("Game Over",0.1)
-					play = input("play again(y/n)?\n")
-					if play == "y":
-						os.system("python main.py")
-					else:
-						print("goodbye.")
 				else:
 					enemy.hp = enemy.maxhp
 					sprint(enemy.name + " defeated")
@@ -359,15 +354,17 @@ while True:
 						i.ammount -= 1
 						if i.ammount < 0:
 							foodinv.remove(i)
-					if i.perc == False:
-						player.hp += i.hp
-					else:
-						player.hp += player.maxhp*i.hp
-						if player.hp > player.maxhp:
-							player.hp = player.maxhp
-					print(i.text)
+						if i.perc == False:
+							player.hp += i.hp
+						else:
+							player.hp += player.maxhp*i.hp
+							if player.hp > player.maxhp:
+								player.hp = player.maxhp
+						print(i.text)
 			else:
 				sprint("you wasted your turn looking for food that you dont have")
+			if action == "":
+				print(random.choice(["You try to eat nothing but its a futile effort.","The nothing you are eating has no flavor","The air is nice... to breath, stop eating it","you try to eat a traditional communist dish, it wasn't very nourishing"]))
 		if action == "flee":
 			flee = random.randint(player.level,100)
 			if flee > (enemy.fleechance*100):
