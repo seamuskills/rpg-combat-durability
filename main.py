@@ -1,9 +1,5 @@
-import random, time, json,os
+import random, time, json
 from encode import ec
-try:
-	os.system("clear")
-except:
-	os.system("cls")
 
 combat = False
 green = "\033[32m "
@@ -175,6 +171,7 @@ wrestler = Creature(1250, 0, sword, "Wrestler", 7500, 1250)
 wrestler.fleechance = 0.1
 attackbear = Creature(1500, 0, ensword, "Attack Bear", 10000, 1500)
 attackbear.fleechance = 0
+
 enemies = [skeleton,zombie,zomknight,armoredskeleton,zomnin,armoredninja,giant,ghost,enghost, giantskeleton, phantom, assasain,wrestler, elephant, crazedbear, madman, wrestler, attackbear]
 maxlevel = len(enemies)-1
 

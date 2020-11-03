@@ -1,0 +1,1 @@
+run="clear; echo see the changelog for new updates!; sleep 2;clear ;python main.py"

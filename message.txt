@@ -167,5 +167,8 @@ reworked the shop so now any weapons in the "weapons" list will be in the shop!
 Cool, earlier today had my first power issues of the year, with the waind, my power is starting to flicker a bit, so I will also be on and off.
 -FunnyL@mma
 
-Me as well. I shall add a new weapon! due to the new shop system it is easier. I disabled the play again option due to glitches.
+Me as well. I shall add a new weapon! due to the new shop system it is easier. I disabled the play again option due to glitches. also the console now clears due to the .replit file (more about this kind of file here: https://docs.repl.it/repls/dot-replit)
 -§eamus
+
+Cool, I am thinking of some more new ideas for the game.
+-FunnyL@mma
