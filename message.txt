@@ -170,5 +170,11 @@ Cool, earlier today had my first power issues of the year, with the waind, my po
 Me as well. I shall add a new weapon! due to the new shop system it is easier. I disabled the play again option due to glitches. also the console now clears due to the .replit file (more about this kind of file here: https://docs.repl.it/repls/dot-replit)
 -§eamus
 
-Cool, I am thinking of some more new ideas for the game.
+Cool, I am thinking of some more new ideas for the game. Just added GitHub realease.
 -FunnyL@mma
+
+I am having horrible power and wifi outages, so I can't be on often at all.
+-FunnyL@mma
+
+sorry to here that, I'm also sorry I have not been on in a while.
+-§eamus 
