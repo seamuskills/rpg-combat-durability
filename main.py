@@ -1,4 +1,4 @@
-import random, time, json,os
+import random, time, json
 from encode import ec
 
 combat = False
@@ -96,6 +96,7 @@ class Food:
 			hp //= 100
 		foods.append(self)
 
+gapple = Food(120,"golden apple","The golden apple tasted heavenly",650,True)
 steak = Food(100,"steak","The steak was cooked perfectly.",300,True)
 steak.ammount = 3
 apple = Food(20,"apple","The apple was good but isn't very satisfying.",50)
@@ -392,8 +393,8 @@ while True:
 		for i in foodinv:
 			if "raw" in i.name:
 				if i.turnscooked < 3:
-					i.turnscooked += 1
 					print("your " + i.name + " has " + str(abs(i.turnscooked-2)) + " turn(s) left to cook!")
+					i.turnscooked += 1
 				else:
 					i.turnscooked = 0
 					i.ammount -= 1
@@ -429,7 +430,7 @@ while True:
 				Champion.progress += 1
 				achievedpoints = Champion.checkachieved(achievedpoints)
 				if difficulty == 1:
-					sprint(red + "next time try hard mode >:D (name your hero sdhrd!). durability goes away twice as fast and food cost grows way quicker! Are you up to the challenge?" + white)
+					sprint(red + "next time try hard mode >:D (name your hero sdhrd!). durability goes away twice as fast! Are you up to the challenge?" + white)
 				if difficulty == 2:
 					Hwin.progress = 1
 					achievedpoints = Hwin.checkachieved(achievedpoints)
