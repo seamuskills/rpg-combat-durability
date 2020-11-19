@@ -1,4 +1,4 @@
-import random, time, json
+import random, time, json,os
 from encode import ec
 
 combat = False
