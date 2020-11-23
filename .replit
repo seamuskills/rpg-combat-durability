@@ -1,1 +1,1 @@
-run="clear; echo see the changelog for new updates!; sleep 2;clear ;python main.py"
+run="clear; echo see the changelog for new updates!; sleep 2;clear ;python main.py; sleep 10; echo why are you still here? restart the program or something..."

@@ -118,3 +118,10 @@
 		-nothing should change surface level.
 	-added play again option when dying.
 	-added long bow
+1.6.0
+	-removed play again
+		-caused all text to turn red
+	-added golden apple
+		-really expensive but heals 120%
+	-fixed "your food has x turn(s) to cook" text
+		-no longer can your food have 0 turns left to cook
