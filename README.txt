@@ -42,3 +42,4 @@ warning! achievement progress cannot be saved if you use cheats
 oh you want me to tell you what they are? find out yourself ;)
 #more update scoming soon!
 #most importantly have fun!
+Ps: We are currently working on a new save file so we can actually save your game progress, hopefully it will be released soon.
