@@ -185,3 +185,6 @@ I have had no power outages today yet, which is really good i'm tired of the con
 
 ▧Awesome! be sure to check github for the issues posted!▧
 -§eamus
+
+Lets try to lean some more about Json files so we can make a real save file, I'll start now. -
+FunnL@mma

@@ -118,6 +118,8 @@
 		-nothing should change surface level.
 	-added play again option when dying.
 	-added long bow
+
+  
 1.6.0
 	-removed play again
 		-caused all text to turn red
