@@ -127,3 +127,7 @@
 		-really expensive but heals 120%
 	-fixed "your food has x turn(s) to cook" text
 		-no longer can your food have 0 turns left to cook
+
+1.7.0
+	-added rings
+		-3 levels, 3 types!
