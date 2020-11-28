@@ -356,6 +356,12 @@ while True:
 			if player.ring.durability <= 0:
 				ringinv.remove(player.ring)
 				player.ring.durability = player.ring.maxdur
+				if player.ring.type == "hp":
+					hppercent = player.hp/player.maxhp
+					player.maxhp -= (5*player.ring.level)*player.maxhp
+					player.hp = player.maxhp*hppercent
+				if player.ring.type == "ap":
+					player.ac -= player.ring.level/10
 				player.ring = None
 		action = input("attack, flee, change weapon, or heal\n")
 		action = action.lower()
