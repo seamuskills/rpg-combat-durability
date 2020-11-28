@@ -95,6 +95,29 @@ class Food:
 		if perc == True:
 			hp //= 100
 		foods.append(self)
+rings = []
+class ring:
+	def __init__(self,t,name,level,durability):
+		self.type = t
+		self.name = name
+		self.level = level
+		self.durability = durability
+		self.maxdur = durability
+		rings.append(self)
+
+bring = ring("unenchanted","unenchanted ring",0,-1)
+
+bhring = ring("hp","ring sanitas",1,15)
+bmhring = ring("maxhp","ring salus",1,25)
+bapring = ring("ap","ring armatura",1,20)
+
+ahring = ring("hp","ring valetudo",2,25)
+amhring = ring("maxhp","ring valitudo",2,35)
+aapring = ring("ap","ring armiger",2,30)
+
+ehring = ring("hp","ring salutare",3,30)
+emhring = ring("maxhp","ring incolumitas",3,40)
+eapring = ring("ap","ring tutela",3,40)
 
 gapple = Food(120,"golden apple","The golden apple tasted heavenly",650,True)
 steak = Food(100,"steak","The steak was cooked perfectly.",300,True)
@@ -128,13 +151,14 @@ throwdarts=Weapon(0.3,75,135,"throwing darts","As the dart embedds into your ene
 adambow=Weapon(0.5,80,145,"adamantium bow","You hit the enemy with the arrow, It seemed effective","your arrow peirces them with little effort!","the enemy was mortally wounded by your attack",100,1375)
 powersword=Weapon(0.5, 100, 155, "power sword","You swing the Power sword and dig it into the creature.","The enemy is impaled by your sword.","The sword goes into your enemy's chest, it's injured.", 100,2000)
 tnt=Weapon(1,300,650,"tnt","You feel the shockwave pulse through your body!","Your ears ring at the massive explosion.","You chuck the tnt at the enemy, you shield your eyes from the bright blast.",0,650)
-hsknife = Weapon(1,30,50,"Heat seeking knife","You miss but the knife htis anyway.","How does this even work!","You almost strike yourself, but the knife guides your hand to the enemy!",30,0)
+hsknife = Weapon(1,30,50,"Heat seeking knife","You miss but the knife hits anyway.","How does this even work!","You almost strike yourself, but the knife guides your hand to the enemy!",30,0)
 luckystick=Weapon(0.7,300,1000,"lucky stick","Your stick feels lucky!","You feel the luck in your bones!","Does fortune favor you?",random.randint(10,15),0)#this stick cant be bought, it can be found every combat, but its only a very slim chance of finding it. its a fun thing that can make each run just that extra bit unique.
 longbow = Weapon(0.65,125,175,"long bow","you draw back the bow and let loose an arrow!","the shot was effective.","You have good aim.",110,2125)
 
 weapons = [sword,ensword,bow,throwdarts,adambow,powersword,longbow]
 inv = [stick]
 foodinv = []
+ringinv = []
 
 acheivments = 0
 skeleton = Creature(20,0.1,bow,"Skeleton",100,20)
@@ -181,6 +205,7 @@ player.ring = None
 player.xp = 0
 player.level = 1
 foodinv = [steak]
+player.ring = None
 
 cheat = True
 cheated = False
@@ -322,6 +347,16 @@ while True:
 	enemy = enemies[random.randint(enemymin,player.level)]
 	sprint(green + "an " + enemy.name + " has engaged" + white)
 	while combat:
+		if player.ring != None:
+			player.ring.durability -= 1
+			if player.ring.type == "hp":
+				player.hp += 5*player.ring.level
+				if player.hp > player.maxhp:
+					player.hp = player.maxhp
+			if player.ring.durability <= 0:
+				ringinv.remove(player.ring)
+				player.ring.durability = player.ring.maxdur
+				player.ring = None
 		action = input("attack, flee, change weapon, or heal\n")
 		action = action.lower()
 		if action == "attack":
@@ -449,6 +484,9 @@ while True:
 		if player.weapon != luckystick:
 			if luckystick in inv:
 				print("equip lucky stick!")
+		print("unenchanted ring (type ring) 100g")
+		print("enchant existing ring (type enchant) 650g")
+		print("equip ring")
 		print("achievements")
 		print("food")
 		if player.weapon != stick and player.weapon != tnt:
@@ -474,7 +512,6 @@ while True:
 					player.weapon = i
 					inv.append(i)
 					print(green+"perchased and equipped "+i.name+white)
-
 		if action == "tnt" and player.coins >= 650:
 			if not tnt in inv:
 				inv.append(tnt)
@@ -496,6 +533,38 @@ while True:
 						print("perchased " + h.name)
 					if action == "exit":
 						perchaseFood = False
+		if action == "equip ring" and len(ringinv)>0:
+			sprint("which ring")
+			for i in ringinv:
+				print(i.name,end=", ")
+			selected_ring = input("the first ring of the type you specify will be picked\n")
+			for i in ringinv:
+				if selected_ring == i.name:
+					if player.ring != None:
+						if player.ring.type == "hp":
+							hppercent = player.hp/player.maxhp
+							player.maxhp -= (5*player.ring.level)*player.maxhp
+							player.hp = player.maxhp*hppercent
+						if player.ring.type == "ap":
+							player.ac -= player.ring.level/10
+					player.ring = i
+					sprint("equipped "+i.name)
+					if player.ring.type == "maxhp":
+						hppercent = player.hp/player.maxhp
+						player.maxhp += (5*player.ring.level)*player.maxhp
+						player.hp = player.maxhp*hppercent
+					if player.ring.type == "ap":
+						player.ac += player.ring.level/10
+					break
+		if action == "ring" and player.coins >= 100:
+			ringinv.append(bring)
+			player.coins -= 100
+			print("perchased unenchanted ring")
+		if action == "enchant" and player.coins >= 650 and bring in ringinv:
+			ringinv.remove(ringinv[0])
+			ringinv.append(random.choice(rings))
+			player.coins -= 650
+			print("you just got '"+ringinv[-1].name+"'")
 		if (action == "repair" or action == "repair weapon") and player.coins > repaircost * (player.weapon.maxdur-player.weapon.dur) and player.weapon != stick:
 			player.coins -= repaircost * (player.weapon.maxdur-player.weapon.dur)
 			player.weapon.dur = player.weapon.maxdur
