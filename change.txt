@@ -131,3 +131,6 @@
 1.7.0
 	-added rings
 		-3 levels, 3 types!
+
+1.7.1
+  -fixed bug with rings.
