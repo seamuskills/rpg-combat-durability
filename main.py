@@ -195,7 +195,9 @@ madman.fleechance = 0.2
 wrestler = Creature(1250, 0, sword, "Wrestler", 7500, 1250)
 wrestler.fleechance = 0.1
 attackbear = Creature(1500, 0, ensword, "Attack Bear", 10000, 1500)
-attackbear.fleechance = 0
+attackbear.fleechance = 0.05
+angryghast = Creature(1000, 0, ensword, "Angry Ghast", 10000, 1000)
+angryghast.fleechance = 0.01
 
 enemies = [skeleton,zombie,zomknight,armoredskeleton,zomnin,armoredninja,giant,ghost,enghost, giantskeleton, phantom, assasain,wrestler, elephant, crazedbear, madman, wrestler, attackbear]
 maxlevel = len(enemies)-1
