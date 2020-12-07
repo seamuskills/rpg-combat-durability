@@ -188,3 +188,8 @@ I have had no power outages today yet, which is really good i'm tired of the con
 
 Lets try to lean some more about Json files so we can make a real save file, I'll start now. -
 FunnL@mma
+
+I already know how json works, we need to decide what to save and when to save it.
+basically json files save dictionarys, using json.dumps(text) we can get json into a python dictionary and using json.loads(dictionary) we can get a dictionary to json format.
+then we just write it to file. we might need to switch to db though as its relatively the same, but on repl.it files only modify locally (they reset when you leave the page if your not the owner of the repl.)
+-§eamus
