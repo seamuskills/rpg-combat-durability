@@ -95,7 +95,11 @@ class Food:
 		if perc == True:
 			hp //= 100
 		foods.append(self)
+
+
 rings = []
+
+
 class ring:
 	def __init__(self,t,name,level,durability):
 		self.type = t
@@ -104,6 +108,11 @@ class ring:
 		self.durability = durability
 		self.maxdur = durability
 		rings.append(self)
+
+
+class Armor:
+  def __init__(self, defense, name)
+
 
 bring = ring("unenchanted","unenchanted ring",0,-1)
 
