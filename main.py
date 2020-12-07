@@ -111,7 +111,16 @@ class ring:
 
 
 class Armor:
-  def __init__(self, defense, name)
+  def __init__(self, defense, name, hpbonus, armorlevel):
+    self.defense = defense
+    self.name = name
+    self.hpbonus = hpbonus
+    self.armorlevel = armorlevel
+    if armorlevel > player.level:
+      self.defense = 0
+      self.hpbonus = 0
+
+
 
 
 bring = ring("unenchanted","unenchanted ring",0,-1)
