@@ -193,3 +193,6 @@ I already know how json works, we need to decide what to save and when to save i
 basically json files save dictionarys, using json.dumps(text) we can get json into a python dictionary and using json.loads(dictionary) we can get a dictionary to json format.
 then we just write it to file. we might need to switch to db though as its relatively the same, but on repl.it files only modify locally (they reset when you leave the page if your not the owner of the repl.)
 -§eamus
+
+sorry I have not been on lately, its finals week at my school and I have had a lot of work to do, this does mean however that I will have a break soon. among that I am also working on another game as you can probably see the other repo on my github profile
+-§eamus

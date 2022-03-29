@@ -110,6 +110,14 @@ class ring:
 		rings.append(self)
 
 
+class helmet:
+  def __init__(self, defense, name, hpbonus, armorlevel):
+    self.defense = defense
+    self.name = name
+    self.hpbonus = hpbonus
+    self.armorlevel = armorlevel
+
+
 class Armor:
   def __init__(self, defense, name, hpbonus, armorlevel):
     self.defense = defense

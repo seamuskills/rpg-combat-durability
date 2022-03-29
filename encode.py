@@ -8,3 +8,5 @@ def dc(string):
 	for i in range(len(string)):
 		news += chr(ord(string[i])-len(string))
 	return news
+
+  
