@@ -12,6 +12,9 @@ def sprint(text, wait=0.05):
 		time.sleep(wait)
 	print("")
 
+
+
+
 achievements = []
 class Acheivment:
 	def __init__(self,maxprogress,name):
@@ -110,29 +113,30 @@ class ring:
 		rings.append(self)
 
 
-class helmet:
-  def __init__(self, defense_bonus, name, hpbonus, helmetlevel):
-    self.defense_bonus = defense_bonus
+class Helmet:
+  def __init__(self, name, hpbonus, level):
     self.name = name
     self.hpbonus = hpbonus
-    self.helmetlevel = helmetlevel
-    if helmetlevel > player.level:
-      self.defense_bonus = 0
-      self.hpbonus = 0
+    self.level = level
+    
     
 
 
 class Armor:
-  def __init__(self, defense, name, hpbonus, armorlevel):
+  def __init__(self, defense, name, hpbonus, level):
     self.defense = defense
     self.name = name
     self.hpbonus = hpbonus
-    self.armorlevel = armorlevel
-    if armorlevel > player.level:
-      self.defense = 0
-      self.hpbonus = 0
+    self.level = level
 
 
+
+
+
+steelhelm = Helmet("Steel Helmet", 10, 3)
+
+
+forarmor = Armor(5, "Armor of the Forest", 10, 3 )
 
 
 bring = ring("unenchanted","unenchanted ring",0,-1)
@@ -148,6 +152,7 @@ aapring = ring("ap","ring armiger",2,30)
 ehring = ring("hp","ring salutare",3,30)
 emhring = ring("maxhp","ring incolumitas",3,40)
 eapring = ring("ap","ring tutela",3,40)
+
 
 gapple = Food(120,"golden apple","The golden apple tasted heavenly",650,True)
 steak = Food(100,"steak","The steak was cooked perfectly.",300,True)
@@ -234,10 +239,15 @@ maxlevel = len(enemies)-1
 
 player = Creature(100,random.randint(10,25)/100,stick,input("name your hero\n"),0,100,True)
 player.ring = None
+player.helmet = None
 player.xp = 0
 player.level = 1
 foodinv = [steak]
 player.ring = None
+
+
+
+
 
 cheat = True
 cheated = False
@@ -394,7 +404,14 @@ while True:
 					player.hp = player.maxhp*hppercent
 				if player.ring.type == "ap":
 					player.ac -= player.ring.level/10
-				player.ring = None
+		player.ring = None
+    if player.helmet != None:
+      if helmet.level > player.level:
+        player.hp += 0
+      elif helmet.level <= player.level:
+        player.health += 5*player.helmet.level
+        if player.hp > player.maxhp:
+          player.hp = player.maxhp
 		action = input("attack, flee, change weapon, or heal\n")
 		action = action.lower()
 		if action == "attack":
