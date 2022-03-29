@@ -111,11 +111,15 @@ class ring:
 
 
 class helmet:
-  def __init__(self, defense, name, hpbonus, armorlevel):
-    self.defense = defense
+  def __init__(self, defense_bonus, name, hpbonus, helmetlevel):
+    self.defense_bonus = defense_bonus
     self.name = name
     self.hpbonus = hpbonus
-    self.armorlevel = armorlevel
+    self.helmetlevel = helmetlevel
+    if helmetlevel > player.level:
+      self.defense_bonus = 0
+      self.hpbonus = 0
+    
 
 
 class Armor:
